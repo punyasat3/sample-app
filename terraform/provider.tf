@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region  = "us-east-1"
   profile = "${var.profile}"
 }
 
@@ -19,5 +19,5 @@ resource "aws_vpc" "myvpc" {
   tags = {
     Name = "MYVPC"
   }
-    
+
 }
