@@ -6,5 +6,7 @@ if [ -z "${BUILD_NUMBER}" ]; then
   cd /workspace
 fi
 
-mvn -U clean install 
+
+mvn clean package
+#mvn -U clean install 
 #terraform --version
