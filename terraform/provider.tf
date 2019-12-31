@@ -1,5 +1,7 @@
 provider "aws" {
   region = "us-east-1"
+  shared_credentials_file = "/.aws/credentials"
+  profile = "${var.profile}"
 }
 
 terraform {
@@ -10,6 +12,9 @@ terraform {
     dynamodb_table = "terraform_locks"
   }
 }
+
+variable "profile" {}
+
 resource "aws_vpc" "myvpc" {
   cidr_block = "10.20.0.0/16"
   tags = {
