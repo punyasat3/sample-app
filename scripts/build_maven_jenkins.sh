@@ -10,3 +10,5 @@ fi
 mvn clean package
 #mvn -U clean install 
 #terraform --version
+
+touch /abc.txt
