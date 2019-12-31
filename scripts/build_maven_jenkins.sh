@@ -7,6 +7,6 @@ if [ -z "${BUILD_NUMBER}" ]; then
 fi
 
 
-mvn clean package
+mvn -s settings.xml clean package
 #mvn -U clean install 
 #terraform --version
