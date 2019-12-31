@@ -5,4 +5,5 @@ properties([[$class: 'jenkins.model.BuildDiscarderProperty', strategy: [$class: 
 
 mavenPipeline {
     maven_package = "scripts/build_maven_jenkins.sh"
+    terraform_plan = "dev"
 }
