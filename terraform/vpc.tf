@@ -7,10 +7,10 @@ resource "aws_vpc" "myvpc" {
 }
 
 resource "aws_subnet" "mysubnet" {
-  count             = "${length(var.azs)}"
-  cidr_block        = "${lookup(var.subnet_cidr, var.env)}"
+  count             = length(var.azs)
+  cidr_block        = "${var.subnet_cidr, count.index)}"
   vpc_id            = aws_vpc.myvpc.id
-  availability_zone = "${element(var.azs, count.index)}"
+  availability_zone = var.azs
   tags = {
     Name = "Subnet-${var.env}"
   }
