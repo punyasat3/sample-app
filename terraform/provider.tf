@@ -11,15 +11,3 @@ terraform {
     dynamodb_table = "terraform_locks"
   }
 }
-
-variable "profile" {}
-
-variable "env" {}
-
-resource "aws_vpc" "myvpc" {
-  cidr_block = "10.20.0.0/16"
-  tags = {
-    Name = "MYVPC-${var.env}"
-  }
-
-}
