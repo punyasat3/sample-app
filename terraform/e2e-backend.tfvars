@@ -1,1 +1,1 @@
-profile = "e2e"
+profile = "dev"

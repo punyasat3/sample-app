@@ -14,10 +14,12 @@ terraform {
 
 variable "profile" {}
 
+variable "env" {}
+
 resource "aws_vpc" "myvpc" {
   cidr_block = "10.20.0.0/16"
   tags = {
-    Name = "MYVPC-${var.profile}"
+    Name = "MYVPC-${var.env}"
   }
 
 }
