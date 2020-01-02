@@ -2,7 +2,7 @@ variable "profile" {}
 
 variable "env" {}
 
-variable "refion" {
+variable "region" {
   default = "us-east-1"
 }
 variable "vpc_cidr" {
