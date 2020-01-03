@@ -108,6 +108,7 @@ resource "aws_route_table_association" "private_association" {
 
 ##################EIP for DEV####################
 resource "aws_eip" "dev_eip" {
+  vpc   = true
   count = "${var.env == "dev" ? 1 : 0}"
   tags = {
     Name = "EIP-${var.env}"
