@@ -117,7 +117,7 @@ resource "aws_route_table_association" "public_association" {
 resource "aws_route_table_association" "private_association" {
   count          = "${length(local.subnet_cidrs_list_private)}"
   subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
-  route_table_id = aws_route_table.private_rt_dev.id
+  route_table_id = aws_route_table.private_rt_dev.*.id[0]
 }
 #################################################
 
