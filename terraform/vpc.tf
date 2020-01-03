@@ -125,7 +125,7 @@ resource "aws_route_table_association" "private_association_dev" {
 resource "aws_route_table_association" "private_association_except_dev" {
   count          = "${var.env == "dev" ? 0 : length(local.subnet_cidrs_list_private)}"
   subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
-  route_table_id = aws_route_table.private_rt_dev.*.id[0]
+  route_table_id = aws_route_table.private_rt_except_dev.*.id[0]
 }
 #################################################
 
