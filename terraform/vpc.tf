@@ -35,7 +35,7 @@ resource "aws_subnet" "mysubnet" {
 
 ###############Private Subnet#############
 resource "aws_subnet" "mysubnet_private" {
-  count             = "${length(local.subnet_cidr_private)}"
+  count             = "${length(local.subnet_cidrs_list_private)}"
   cidr_block        = "${element(local.subnet_cidrs_list_private, count.index)}"
   vpc_id            = local.vpc_id
   availability_zone = "${data.aws_availability_zones.azs.names[count.index]}"
