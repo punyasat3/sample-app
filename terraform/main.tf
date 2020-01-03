@@ -5,7 +5,7 @@ module "ec2" {
   instance_count              = 1
   user_data                   = "${file("scripts/apache.sh")}"
   associate_public_ip_address = true
-  vpc_security_group_ids      = ["${module.sg.id}"]
+  vpc_security_group_ids      = ["${module.sg.sg_id}"]
   key_name                    = "new"
   subnet_id                   = "${aws_subnet.mysubnet.*.id[0]}"
   ami_id                      = "${lookup(var.ami_id, var.region)}"
@@ -39,7 +39,7 @@ resource "aws_iam_policy" "policy" {
   path        = "/"
   description = "${var.partition_name} Policy"
 
-  policy = "${file("iam/role-policy.json")}"
+  policy = "${file("iam/role_policy.json")}"
 }
 
 resource "aws_iam_policy_attachment" "test-attach" {

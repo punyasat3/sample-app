@@ -25,3 +25,8 @@ resource "aws_security_group" "allow_ssh_http" {
     Name = "${var.partition_name}-${var.sg_name}-${var.env}"
   }
 }
+
+
+output "sg_id" {
+  value = "${aws_security_group.allow_ssh_http.id}"
+}
