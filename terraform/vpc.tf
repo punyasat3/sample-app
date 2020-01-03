@@ -120,7 +120,7 @@ resource "aws_eip" "dev_eip" {
 ##################NAT GateWay for DEV#################
 resource "aws_nat_gateway" "nat_gateway" {
   count         = "${var.env == "dev" ? 1 : 0}"
-  allocation_id = "${aws_eip.dev_eip.id}"
+  allocation_id = "${aws_eip.dev_eip.*.id[0]}"
   subnet_id     = "${aws_subnet.mysubnet.*.id[0]}"
 
   tags = {
