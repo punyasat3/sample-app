@@ -24,6 +24,15 @@ variable "subnet_cidr" {
 
   }
 }
+variable "subnet_cidr_private" {
+  type = map
+  default = {
+    dev = ["10.20.3.0/25", "10.20.4.0/25", "10.20.5.0/25"]
+    e2e = ["10.21.3.0/25", "10.21.4.0/25", "10.21.5.0/25"]
+    qa  = ["10.22.3.0/25", "10.22.4.0/25", "10.22.5.0/25"]
+
+  }
+}
 # variable "azs" {
 #   type = map
 #   default = {

@@ -1,6 +1,7 @@
 locals {
-  subnet_cidrs_list = lookup(var.subnet_cidr, var.env)
-  vpc_id            = aws_vpc.myvpc.id
+  subnet_cidrs_list         = lookup(var.subnet_cidr, var.env)
+  subnet_cidrs_list_private = lookup(var.subnet_cidr_private, var.env)
+  vpc_id                    = aws_vpc.myvpc.id
 }
 
 
@@ -25,7 +26,18 @@ resource "aws_subnet" "mysubnet" {
   # availability_zone = "${lookup(var.azs, var.env)}"
   availability_zone = "${data.aws_availability_zones.azs.names[count.index]}"
   tags = {
-    Name = "Subnet-${var.env}-${count.index + 1}"
+    Name = "Subnet-Public-${var.env}-${count.index + 1}"
+  }
+
+}
+
+resource "aws_subnet" "mysubnet_private" {
+  count             = "${length(local.subnet_cidr_private)}"
+  cidr_block        = "${element(local.subnet_cidrs_list_private, count.index)}"
+  vpc_id            = local.vpc_id
+  availability_zone = "${data.aws_availability_zones.azs.names[count.index]}"
+  tags = {
+    Name = "Subnet-Private-${var.env}-${count.index + 1}"
   }
 
 }
