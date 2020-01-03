@@ -20,7 +20,7 @@ variable "subnet_id" {}
 variable "region" {
   default = "us-east-1"
 }
-
+variable "env" {}
 variable "ami_id" {}
 
 variable "iam_instance_profile" {}
