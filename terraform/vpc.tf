@@ -74,11 +74,11 @@ resource "aws_route_table" "public_rt" {
 
 #############Private Route Tables#########
 resource "aws_route_table" "private_rt" {
-  vpc_id = local.vpc_id
-
+  vpc_id   = local.vpc_id
+  for_each = var.env == "dev" ? [var.env] : []
   route {
-    cidr_block     = "${var.env == "dev" ? "0.0.0.0/0" : null}"
-    nat_gateway_id = "${var.env == "dev" ? aws_nat_gateway.nat_gateway.*.id[0] : null}"
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = "${aws_nat_gateway.nat_gateway.*.id[0]}"
   }
 
   tags = {
@@ -128,3 +128,14 @@ resource "aws_nat_gateway" "nat_gateway" {
   }
 }
 ###################################################
+
+
+
+
+# dynamic "access_logs" {
+#   for_each = var.environment_name == "production" ? [var.environment_name] : []
+#   content {
+#     bucket  = "my-bucket"
+#     prefix  = "${var.environment_name}-alb"
+#   }
+# }
