@@ -5,5 +5,6 @@ properties([[$class: 'jenkins.model.BuildDiscarderProperty', strategy: [$class: 
 
 terraformPipeline {
     maven_package = "scripts/build_maven_jenkins.sh"
-    terraform_apply_develop = ["qa"]
+    // terraform_apply_envs = ["qa"]
+    terraform_destroy_envs = ["qa"]
 }
