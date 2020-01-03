@@ -24,12 +24,13 @@ variable "subnet_cidr" {
 
   }
 }
-variable "azs" {
-  type = map
-  default = {
-    dev = "us-east-1a"
-    e2e = "us-east-1b"
-    qa  = "us-east-1c"
-
-  }
-}
+# variable "azs" {
+#   type = map
+#   default = {
+#     dev = "us-east-1a"
+#     e2e = "us-east-1b"
+#     qa  = "us-east-1c"
+#
+#   }
+# }
+data "aws_availability_zones" "azs" {}
