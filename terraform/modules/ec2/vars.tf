@@ -22,3 +22,5 @@ variable "region" {
 }
 
 variable "ami_id" {}
+
+variable "iam_instance_profile" {}

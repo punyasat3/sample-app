@@ -7,8 +7,9 @@ resource "aws_instance" "web" {
   vpc_security_group_ids      = "${var.vpc_security_group_ids}"
   associate_public_ip_address = "${var.associate_public_ip_address}"
   user_data                   = "${var.user_data}"
+  iam_instance_profile        = "${var.iam_instance_profile}"
 
   tags = {
-    Name = "${var.partition_name}-${var.env}"
+    Name = "${var.partition_name}-${var.env}-${count.index + 1}"
   }
 }

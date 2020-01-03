@@ -9,6 +9,7 @@ module "ec2" {
   key_name                    = "new"
   subnet_id                   = "${aws_subnet.mysubnet.*.id[0]}"
   ami_id                      = "${lookup(var.ami_id, var.region)}"
+  iam_instance_profile        = "${aws_iam_instance_profile.test_profile.name}"
 
 }
 
