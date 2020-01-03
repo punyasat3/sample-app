@@ -113,14 +113,21 @@ resource "aws_route_table_association" "public_association" {
 ##############################################
 
 
-#############Private Route Association#########
-resource "aws_route_table_association" "private_association" {
-  count          = "${length(local.subnet_cidrs_list_private)}"
+#############Private Route Association for dev#########
+resource "aws_route_table_association" "private_association_dev" {
+  count          = "${var.env == "dev" ? length(local.subnet_cidrs_list_private) : 0}"
   subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
   route_table_id = aws_route_table.private_rt_dev.*.id[0]
 }
 #################################################
 
+#############Private Route Association for except dev#########
+resource "aws_route_table_association" "private_association_except_dev" {
+  count          = "${var.env == "dev" ? 0 : length(local.subnet_cidrs_list_private)}"
+  subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
+  route_table_id = aws_route_table.private_rt_dev.*.id[0]
+}
+#################################################
 
 ##################EIP for DEV####################
 resource "aws_eip" "dev_eip" {
