@@ -76,10 +76,10 @@ resource "aws_route_table" "public_rt" {
 resource "aws_route_table" "private_rt" {
   vpc_id = local.vpc_id
 
-  # route {
-  #   cidr_block = "0.0.0.0/0"
-  #   gateway_id = "${aws_internet_gateway.my_igw.id}"
-  # }
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = "${aws_internet_gateway.nat_gateway.id}"
+  }
 
   tags = {
     Name = "MyVPC-Private-RT-${var.env}"
