@@ -10,6 +10,7 @@ module "ec2" {
   subnet_id                   = "${aws_subnet.mysubnet.*.id[0]}"
   ami_id                      = "${lookup(var.ami_id, var.region)}"
   iam_instance_profile        = "${aws_iam_instance_profile.test_profile.name}"
+  partition_name              = "${var.partition_name}"
 
 }
 
@@ -20,9 +21,9 @@ module "sg" {
   port1          = 22
   port2          = 80
   protocol_name  = "tcp"
-  partition_name = "MTS"
   env            = "${var.env}"
   cidr_blocks    = "0.0.0.0/0"
+  partition_name = "${var.partition_name}"
 
 }
 
