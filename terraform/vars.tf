@@ -43,3 +43,17 @@ variable "subnet_cidr_private" {
 #   }
 # }
 data "aws_availability_zones" "azs" {}
+
+
+variable "ami_id" {
+  type = "map"
+  default = {
+    us-east-1 = "ami-00eb20669e0990cb4"
+    us-east-2 = "ami-00eb20vsbvjs0990cb4"
+    us-west-2 = "ami-00eb20vsbvjs1251725"
+  }
+}
+
+variable "partition_name" {
+  default = "MTS"
+}
