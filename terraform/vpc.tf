@@ -103,4 +103,27 @@ resource "aws_route_table_association" "private_association" {
   subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
   route_table_id = aws_route_table.private_rt.id
 }
-##############################################
+#################################################
+
+
+##################EIP for DEV####################
+resource "aws_eip" "dev_eip" {
+  count = "${var.env == "dev" ? 1 : 0}"
+  tags = {
+    Name = "EIP-${var.env}"
+  }
+}
+###################################################
+
+
+##################NAT GateWay for DEV#################
+resource "aws_nat_gateway" "nat_gateway" {
+  count         = "${var.env == "dev" ? 1 : 0}"
+  allocation_id = "${aws_eip.dev_eip.id}"
+  subnet_id     = "${aws_subnet.mysubnet.*.id[0]}"
+
+  tags = {
+    Name = "MYVPC-NAT-GATEWAY-${var.env}"
+  }
+}
+###################################################
