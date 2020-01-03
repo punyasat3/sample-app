@@ -23,7 +23,7 @@ module "sg" {
   port2          = 80
   protocol_name  = "tcp"
   env            = "${var.env}"
-  cidr_blocks    = "0.0.0.0/0"
+  cidr_blocks    = ["0.0.0.0/0"]
   partition_name = "${var.partition_name}"
 
 }
