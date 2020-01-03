@@ -72,21 +72,37 @@ resource "aws_route_table" "public_rt" {
 #########################################
 
 
-#############Private Route Tables#########
-# resource "aws_route_table" "private_rt" {
-#   vpc_id = local.vpc_id
-#
-#   route {
-#     cidr_block     = "${var.env == "dev" ? "0.0.0.0/0" : []}"
-#     nat_gateway_id = "${var.env == "dev" ? aws_nat_gateway.nat_gateway.*.id[0] : []}"
-#   }
-#
-#   tags = {
-#     Name = "MyVPC-Private-RT-${var.env}"
-#   }
-# }
+#############Private Route Tables for Dev#########
+resource "aws_route_table" "private_rt_dev" {
+  count  = "${var.env == "dev" ? 1 : 0}"
+  vpc_id = local.vpc_id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = "${aws_nat_gateway.nat_gateway.*.id[0]}"
+  }
+
+  tags = {
+    Name = "MyVPC-Private-RT-${var.env}"
+  }
+}
 #########################################
 
+#############Private Route Tables for Except Dev#########
+resource "aws_route_table" "private_rt_except_dev" {
+  count  = "${var.env == "dev" ? 0 : 1}"
+  vpc_id = local.vpc_id
+
+  # route {
+  #   cidr_block     = "0.0.0.0/0"
+  #   nat_gateway_id = "${aws_nat_gateway.nat_gateway.*.id[0]}"
+  # }
+
+  tags = {
+    Name = "MyVPC-Private-RT-${var.env}"
+  }
+}
+#########################################
 
 #############Public Route Association#########
 resource "aws_route_table_association" "public_association" {
@@ -98,11 +114,11 @@ resource "aws_route_table_association" "public_association" {
 
 
 #############Private Route Association#########
-# resource "aws_route_table_association" "private_association" {
-#   count          = "${length(local.subnet_cidrs_list_private)}"
-#   subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
-#   route_table_id = aws_route_table.private_rt.id
-# }
+resource "aws_route_table_association" "private_association" {
+  count          = "${length(local.subnet_cidrs_list_private)}"
+  subnet_id      = "${aws_subnet.mysubnet_private.*.id[count.index]}"
+  route_table_id = aws_route_table.private_rt.id
+}
 #################################################
 
 
