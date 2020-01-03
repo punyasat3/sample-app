@@ -12,7 +12,7 @@ resource "aws_subnet" "mysubnet" {
   vpc_id            = aws_vpc.myvpc.id
   availability_zone = "${lookup(var.azs, var.env)}"
   tags = {
-    Name = "Subnet-${var.env}"
+    Name = "Subnet-${var.env}-${count.index + 1}"
   }
 
 }
