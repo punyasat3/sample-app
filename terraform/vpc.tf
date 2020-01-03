@@ -8,7 +8,7 @@ resource "aws_vpc" "myvpc" {
 
 resource "aws_subnet" "mysubnet" {
   count             = 3
-  cidr_block        = "${element((var.subnet_cidr, var.env), count.index)}"
+  cidr_block        = "${element(var.subnet_cidr, [var.env, count.index])}"
   vpc_id            = aws_vpc.myvpc.id
   availability_zone = "${lookup(var.azs, var.env)}"
   tags = {
