@@ -1,6 +1,0 @@
-docker login -u admin -p admin123 172.31.38.8:8089
-s=$(cat pom.xml | grep "<version>"| head -1 | awk '{print $1}' | sed "s/<version>//" | sed "s/<.*//")
-docker build -t 172.31.38.8:8089/mysampleapp:$s .
-docker push 172.31.38.8:8089/mysampleapp:$s
-ssh -i /var/lib/jenkins/nvergenia.pem -o StrictHostKeyChecking=no ec2-user@172.31.34.195 docker login -u admin -p admin123 172.31.38.8:8089
-ssh -i /var/lib/jenkins/nvergenia.pem -o StrictHostKeyChecking=no ec2-user@172.31.34.195 docker run -d --name "suresh" -p 8585:8080 172.31.38.8:8089/mysampleapp:$s

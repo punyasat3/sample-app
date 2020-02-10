@@ -1,3 +1,0 @@
-dummy
-vsahj
-demo message

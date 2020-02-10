@@ -1,9 +1,0 @@
-a=$(cat pom.xml | grep "<version>" | head -n 1 |awk '{print $1}' |sed -e "s/<version>//" | sed 's/<.*//')
-docker rm -f suresh123
-docker rmi -f devopsmptech/tomcat10:$a
-docker build -t devopsmptech/tomcat10:$a .
-docker login -u devopsmptech -p **********
-docker push devopsmptech/tomcat10:$a
-docker run -d -p 9094:8080 --name suresh123 devopsmptech/tomcat10:$a
-# docker run -d -p 9094:8080 --name suresh123 devopsmptech/tomcat10:$a
-# docker run -d -p 9094:8080 --name suresh123 devopsmptech/tomcat10:$a

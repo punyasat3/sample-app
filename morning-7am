@@ -1,5 +1,0 @@
-mv target/*.war target/shipwrick.war
-scp -i /var/lib/jenkins/suresh.pem -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/shipwick/target/shipwrick.war ec2-user@172.31.31.250:/opt/tomcat8/webapps
-ssh -i /var/lib/jenkins/suresh.pem -o StrictHostKeyChecking=no ec2-user@172.31.31.250 /opt/tomcat8/bin/shutdown.sh
-ssh -i /var/lib/jenkins/suresh.pem -o StrictHostKeyChecking=no ec2-user@172.31.31.250 /opt/tomcat8/bin/startup.sh
- import boto3 as client

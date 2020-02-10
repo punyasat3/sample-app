@@ -1,4 +1,0 @@
-{
-        "insecure-registries": ["172.31.38.8:8484"],
-        "disable-legacy-registry": true
-}
