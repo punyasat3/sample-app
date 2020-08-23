@@ -1,8 +1,8 @@
 // Module specific variables
 
-variable "instance_name" {
-  description = "satyainstance"
-}
+//variable "instance_name" {
+//  description = "satyainstance"
+//}
 
 variable "instance_type" {
   description = "t2.micro"
@@ -17,19 +17,19 @@ variable "ami_id" {
 }
 
 variable "number_of_instances" {
-  description = "number of instances to make"
+  description = "1"
   default = 1
 }
 
-variable "user_data" {
-  description = "The path to a file with user_data for the instances"
-}
+//variable "user_data" {
+ // description = "The path to a file with user_data for the instances"
+//}
 
-variable "tags" {
-  default = {
-    created_by = "terraform"
- }
-}
+//variable "tags" {
+ // default = {
+  //  created_by = "terraform"
+ //}
+//}
 
 // Variables for providers used in this module
 //variable "aws_access_key" {}
