@@ -1,3 +1,4 @@
+value1 = "satya"
 provider "aws" {
         region = "us-west-2"
 }
