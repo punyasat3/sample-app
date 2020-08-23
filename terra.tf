@@ -8,8 +8,8 @@ resource "aws_instance" "my-instance" {
         key_name = "satya"
         user_data = "${file("install_apache.sh")}"
         tags = {
-                Name = "cms_api1"
-                Role = "cms_apii"
+                Name = "cms_i1"
+                Role = "cms_"
                 Environmaent = "production"
         }
 }
