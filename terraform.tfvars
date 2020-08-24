@@ -9,3 +9,5 @@ key_name = "satya"
 user_data = "install_apache.sh"
 sgs = ["sg-05711d6d6baa46ec4"]
 tag_name = "tagupdated"
+
+tags = { Name = "satya"}
