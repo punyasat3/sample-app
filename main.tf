@@ -31,7 +31,7 @@ resource "aws_instance" "my-instance" {
                //delete_on_termination = "${var.root_vl_delete}"
         }
         tags = {
-                 Name = "${var.tag_name"
+                 Name = "${var.tag_name}"
                  Role = "user_"
                  Environmaent = "Dev"
         }
