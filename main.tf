@@ -6,7 +6,9 @@ variable "root_vl_size" {}
 //variable "root_vl_delete" {}
 variable "subnet_id" {}
 variable "number_of_instances" {}
-variable "sgs" {}
+variable "sgs" {
+    type = list(string)    
+}
 variable "user_data" {}
 variable "key_name" {}
 variable "region" {}
