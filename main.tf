@@ -13,6 +13,9 @@ variable "user_data" {}
 variable "tag_name" {}
 variable "key_name" {}
 variable "region" {}
+variable "tags" {
+  default = {}
+}
 //variable "vpc_id" {}
 
 
@@ -30,10 +33,6 @@ resource "aws_instance" "my-instance" {
                 volume_size           = "${var.root_vl_size}"
                //delete_on_termination = "${var.root_vl_delete}"
         }
-        tags = {
-                 Name = "${var.tag_name}"
-                 Role = "${var.tag_Role}"
-                 Environmaent = "Dev"
-        }
+        tags = "${var.tags}"
         vpc_security_group_ids  = "${var.sgs}"
 }
