@@ -7,7 +7,7 @@ variable "root_vl_size" {}
 variable "subnet_id" {}
 variable "number_of_instances" {}
 variable "sgs" {
-    type = list(string)    
+   // type = list(string)    
 }
 variable "user_data" {}
 variable "key_name" {}
