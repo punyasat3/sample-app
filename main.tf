@@ -15,7 +15,7 @@ resource "aws_instance" "my-instance" {
         instance_type = "t2.micro"
         subnet_id          = "${var.subnet_id}"
         key_name = "satya"
-        user_data = "${file("install_apache.sh")}"
+        user_data = "${var.user_data}"
         tags = {
                  Name = "second333"
                  Role = "user_"
