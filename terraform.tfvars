@@ -9,3 +9,4 @@ key_name = "satya"
 //number_of_instances =  
 user_data = "install_apache.sh"
 //vpc_id = "vpc-0e61818e9cbfba536"
+sgs = "launch-wizard-8"
