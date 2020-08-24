@@ -3,18 +3,19 @@ variable "instance_type" {}
 variable "subnet_id" {}
 variable "number_of_instances" {}
 variable "user_data" {}
+variable "key_name" {}
+variable "region" {}
 //variable "vpc_id" {}
 
 
 provider "aws" {
-        region = "us-west-2"
+        region = "${var.region}"
 }
 resource "aws_instance" "my-instance" {
         ami = "${var.ami_id}"
-        //ami = "ami-0873b46c45c11058d"
-        instance_type = "t2.micro"
+        instance_type = "${var.instance_type}"
         subnet_id          = "${var.subnet_id}"
-        key_name = "satya"
+        key_name =  "${var.key_name}"
         user_data = "${file(var.user_data)}"
         tags = {
                  Name = "second333"
