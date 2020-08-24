@@ -6,6 +6,7 @@ variable "root_vl_size" {}
 //variable "root_vl_delete" {}
 variable "subnet_id" {}
 variable "number_of_instances" {}
+variable "sgs" {}
 variable "user_data" {}
 variable "key_name" {}
 variable "region" {}
@@ -31,4 +32,5 @@ resource "aws_instance" "my-instance" {
                  Role = "user_"
                  Environmaent = "Dev"
         }
+        vpc_security_group_ids      = var.sgs
 }
