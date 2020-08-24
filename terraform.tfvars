@@ -1,3 +1,5 @@
+aws_access_key = "AKIARMDSSSFU3W7WD7GZ"
+aws_secret_key = "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"
 region = "us-west-2"
 ami_id = "ami-0873b46c45c11058d"
 instance_type = "t2.micro"
