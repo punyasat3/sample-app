@@ -32,7 +32,7 @@ resource "aws_instance" "my-instance" {
         }
         tags = {
                  Name = "${var.tag_name}"
-                 Role = "user_"
+                 Role = "${var.tag_Role}"
                  Environmaent = "Dev"
         }
         vpc_security_group_ids  = "${var.sgs}"
