@@ -1,5 +1,9 @@
 variable "ami_id" {}
 variable "instance_type" {}
+
+variable "root_vl_type" {}
+variable "root_vl_size" {}
+//variable "root_vl_delete" {}
 variable "subnet_id" {}
 variable "number_of_instances" {}
 variable "user_data" {}
@@ -17,6 +21,11 @@ resource "aws_instance" "my-instance" {
         subnet_id          = "${var.subnet_id}"
         key_name =  "${var.key_name}"
         user_data = "${file(var.user_data)}"
+        root_block_device {
+                volume_type           = "${var.root_vl_type}"
+                volume_size           = "${var.root_vl_size}"
+               //delete_on_termination = "${var.root_vl_delete}"
+        }
         tags = {
                  Name = "second333"
                  Role = "user_"
