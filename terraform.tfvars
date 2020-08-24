@@ -11,4 +11,4 @@ key_name = "saty"
 user_data = "install_apache.sh"
 sgs = ["sg-036a39796e1e75085"]
 
-tags = {"Name":"cms_api", "Environment ":"production"}
+tags = {"Name":"sat_api", "Environment ":"production"}
