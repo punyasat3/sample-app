@@ -11,7 +11,7 @@ resource "aws_instance" "my-instance" {
         key_name = "satya"
         user_data = "${file("install_apache.sh")}"
         tags = {
-                 Name = "sztyatags"
+                 Name = "second"
                  Role = "cms_"
                  Environmaent = "production"
         }
