@@ -32,5 +32,5 @@ resource "aws_instance" "my-instance" {
                  Role = "user_"
                  Environmaent = "Dev"
         }
-        vpc_security_group_id      = "${var.sgs}"
+        vpc_security_group_ids  = "${var.sgs}"
 }
