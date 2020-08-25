@@ -1,5 +1,5 @@
-aws_access_key = "AKIARMDSSSFU3W7W"
-aws_secret_key = "GdqGGLULV5J5LGIdhB409wP1AM"
+aws_access_key = "AKIARMDSSSFU3W7WD7GZ"
+aws_secret_key = "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"
 region = "ap-south-1"
 ami_id = "ami-0ebc1ac48dfd14136"
 instance_type = "t2.micro"
